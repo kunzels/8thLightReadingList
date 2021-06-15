@@ -3,6 +3,7 @@
 A small command-line program designed to query google books API. After querying books are able to be added to a reading list, and viewed. 
 
 <h1> Goals for this project </h1>
+
 * Type in a query and display a list of 5 books matching that query.
 * Each item in the list should include the book's author, title, and publishing company.
 * A user should be able to select a book from the five displayed to save to a “Reading List”
