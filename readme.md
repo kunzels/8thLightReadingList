@@ -3,10 +3,10 @@ Google Books API and Reading List
 A small command-line program designed to query google books API with a simple reading list attached.
 
 Goals for this project:
-Type in a query and display a list of 5 books matching that query.
-Each item in the list should include the book's author, title, and publishing company.
-A user should be able to select a book from the five displayed to save to a “Reading List”
-View a “Reading List” with all the books the user has selected from their queries -- this is a local reading list and not tied to Google Books account features.
+* Type in a query and display a list of 5 books matching that query.
+* Each item in the list should include the book's author, title, and publishing company.
+* A user should be able to select a book from the five displayed to save to a “Reading List”
+* View a “Reading List” with all the books the user has selected from their queries -- this is a local reading list and not tied to Google Books account features.
 
 To run
 
@@ -35,19 +35,19 @@ Selecting an item sends the selection to the listAndDbInsert function. This form
 Resources
 
 Accessing the google books API was done through the aid of the rest-client gem. You can see this link for documentation on rest-client.
-https://github.com/rest-client/rest-client
+* https://github.com/rest-client/rest-client
 
 The google books API documentation is here.
-https://developers.google.com/books/docs/overview
+* https://developers.google.com/books/docs/overview
 
 I also installed a helpful integration called tty-prompt. This allows for some easy-to-manage UI improvements. See documentation here.
-https://github.com/piotrmurach/tty-prompt
+* https://github.com/piotrmurach/tty-prompt
 
 Sqlite3 documentation, specific to ruby. Some more references are linked here as well.
-https://rubydoc.info/gems/sqlite3/1.3.8/frames
+* https://rubydoc.info/gems/sqlite3/1.3.8/frames
 
 Byebug is included. This would be removed on a production build, but it is included if you'd like to use it. Simply place debugger on a line. See documentation here.
-https://github.com/deivid-rodriguez/byebug
+* https://github.com/deivid-rodriguez/byebug
 
 Future considerations
 
