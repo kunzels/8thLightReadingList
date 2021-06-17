@@ -105,7 +105,7 @@ class ReadingList
             # Chooses where to send the selection
             if selection != "back"
                 listAndDbInsert(selection)
-            else selection == "back"
+            else 
                 search()
             end
         end
@@ -127,4 +127,4 @@ class ReadingList
     end
 end
 
-test = ReadingList.new()
+list = ReadingList.new()
