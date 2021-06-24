@@ -60,3 +60,4 @@ Byebug is included. This would be removed on a production build, but it is inclu
 5. User login integration.
 6. Next button for queries to allow choices beyond just 5.
 7. Better key security.
+
