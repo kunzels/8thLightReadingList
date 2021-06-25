@@ -1,6 +1,6 @@
 <h1> Google Books API and Reading List </h1>
 
-A small command-line program designed to query google books API. After querying books are able to be added to a reading list, and viewed. 
+A small command-line program designed to query google books API. After querying, books are able to be added to a reading list and viewed. The project requires ruby version >= 2.4.0, sqlite3 as a simple database, ttyprompt for some easy-to-manage UI improvements, and rest client for API queries.  
 
 <h1> Goals for this project </h1>
 
@@ -12,6 +12,7 @@ A small command-line program designed to query google books API. After querying 
 <h1> To run </h1>
 
 1. Navigate to 8thLightStevenKunzel in the terminal.
+2. Ensure ruby version 2.4.0 or higher is installed.
 2. Run bundle install in the console to install relevant gems.
 3. Create an environment variable using your google books API key (run in terminal: export GOOGLE_API_KEY_STEVE_BOOKS=key). You can choose a different environment variable name by altering line 13.
 4. Run ruby readingList.rb in the console. 
@@ -30,30 +31,33 @@ Upon creating a proper searchField, it moves to the searchInput function to retr
 
 It returns the search term to the search function, moving to the query function.
 
-The query functions interpolates the passed searchField and searchTerm into a URL adding a limit of 5 to the max results, and utilizing google API's "projection=lite" param to make the records smaller in size, including less irrelevant information. It runs a query to the API, parsing the data into JSON. We check if the length is greater than 3 because anything less indicates no results. If there are results, we will display to the user the results found, including the title, author, and publisher. If the user selects back, the search is run again, otherwise, they can select an item.
+The query function interpolates the passed searchField and searchTerm into a URL adding a limit of 5 to the max results, and utilizing google API's "projection=lite" param to make the records smaller in size, including less irrelevant information. It runs a query to the API, parsing the data into JSON. We check if the length is greater than 3 because anything less indicates no results. If there are results, we will display to the user the results found, including the title, author, and publisher. If the user selects back, the search is run again, otherwise, they can select an item.
 
 Selecting an item sends the selection to the listAndDbInsert function. This formats the selection to check if it is already present in the @list hash. If it isn't, it inserts and executes a database insertion.
 
 <h1> Resources </h1>
 
-Accessing the google books API was done through the aid of the rest-client gem. You can see this link for documentation on rest-client.
-* https://github.com/rest-client/rest-client
+Ruby installation documentation.   
+* https://www.ruby-lang.org/en/documentation/installation/
 
 The google books API documentation is here.
 * https://developers.google.com/books/docs/overview
 
-I also installed a helpful integration called tty-prompt. This allows for some easy-to-manage UI improvements. See documentation here.
+Accessing the google books API was done through the aid of the rest-client gem. You can see this link for documentation on rest-client. Ruby version >= 1.9.2 is required.
+* https://github.com/rest-client/rest-client
+
+I also installed a helpful integration called tty-prompt. This allows for some easy-to-manage UI improvements. See documentation here. Ruby version >= 2.0.0 is required.
 * https://github.com/piotrmurach/tty-prompt
 
-Sqlite3 documentation, specific to ruby. Some more references are linked here as well.
+Sqlite3 documentation, specific to ruby. Some more references are linked here as well. Ruby version >= 1.8.7 is required.
 * https://rubydoc.info/gems/sqlite3/1.3.8/frames
 
-Byebug is included. This would be removed on a production build, but it is included if you'd like to use it. Simply place debugger on a line. See documentation here.
+Byebug is included. This would be removed on a production build, but it is included if you'd like to use it. Simply place debugger on a line. See documentation here. Ruby version >= 2.4.0 is required.
 * https://github.com/deivid-rodriguez/byebug
 
 <h1> Future considerations </h1>
 
-1. Add tests. I decided against tests for this project due to time constraints, but RSPEC could be utilized for a spec based testing suite.
+1. Add tests. I decided against tests for this project due to time constraints, but RSPEC could be utilized for a spec-based testing suite.
 2. Make the list more readable, perhaps a nice-looking table that organizes everything.
 3. Ability to delete from the reading list, or check off completed books to move to a finished list, etc.
 4. Filter further, by title AND author, by year, etc.
@@ -69,3 +73,8 @@ Byebug is included. This would be removed on a production build, but it is inclu
 2. Exploring using dotenv instead of relying on exporting an API key at the system level would be preferable. I was not able to get it working by exporting in zsh.
 3. Can we add more documentation on the ruby version needed to run this program?
 4. Could we add a few tests around your methods, time permitting?
+
+<h2> Applied changes to 6/24/21 </h2>
+
+1. The gem was incorrectly labeled 'debugger' in the gemfile. This should have been 'byebug'. Fixing this should resolve point one, but I have also added a version dependency for ruby. 
+   The most recent version of ruby required is from the byebug gem, requiring ruby 2.4.0 or higher. While we should be able to dynamically allow for the gem to install the most recent version of byebug depending on the user's ruby version, I prefer to have the user update their ruby version for stability and security.  
