@@ -61,3 +61,11 @@ Byebug is included. This would be removed on a production build, but it is inclu
 6. Next button for queries to allow choices beyond just 5.
 7. Better key security.
 
+<h1> Feedback Changes </h1>
+<h2>Feedback 6/24/21 from Hugh Sato</h2>
+
+1. Debugger gem only works for Ruby < 2.0, and given that the Ruby version was not defined in the readme, I had to add byebug on my own to figure out how to successfully bundle install. 
+   Can we update the gemfile to meet build needs? What else could we do to make sure setup is seamless?
+2. Exploring using dotenv instead of relying on exporting an API key at the system level would be preferable. I was not able to get it working by exporting in zsh.
+3. Can we add more documentation on the ruby version needed to run this program?
+4. Could we add a few tests around your methods, time permitting?
