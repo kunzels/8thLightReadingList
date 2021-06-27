@@ -1,6 +1,6 @@
 <h1> Google Books API and Reading List </h1>
 
-A small command-line program designed to query google books API. After querying, books are able to be added to a reading list and viewed. The project requires ruby version >= 2.4.0, sqlite3 as a simple database, ttyprompt for some easy-to-manage UI improvements, and rest client for API queries.  
+A small command-line program designed to query google books API. After querying, books are able to be added to a reading list and viewed. The project was created in ruby version 2.5.1p57, and requires ruby version >= 2.4.0. It utilizes sqlite3 as a simple database, ttyprompt for some easy-to-manage UI improvements, and rest client for API queries.  
 
 <h1> Goals for this project </h1>
 
@@ -43,7 +43,7 @@ Ruby installation documentation.
 The google books API documentation is here.
 * https://developers.google.com/books/docs/overview
 
-Accessing the google books API was done through the aid of the rest-client gem. You can see this link for documentation on rest-client. Ruby version >= 1.9.2 is required.
+Accessing the google books API was done through the aid of the rest-client gem. You can see this link for documentation on rest-client. Ruby version >= 2.0.0 is required.
 * https://github.com/rest-client/rest-client
 
 I also installed a helpful integration called tty-prompt. This allows for some easy-to-manage UI improvements. See documentation here. Ruby version >= 2.0.0 is required.
@@ -66,7 +66,7 @@ Byebug is included. This would be removed on a production build, but it is inclu
 7. Better key security.
 
 <h1> Feedback Changes </h1>
-<h2>Feedback 6/24/21 from Hugh Sato</h2>
+<h2> Feedback 6/24/21 from Hugh Sato </h2>
 
 1. Debugger gem only works for Ruby < 2.0, and given that the Ruby version was not defined in the readme, I had to add byebug on my own to figure out how to successfully bundle install. 
    Can we update the gemfile to meet build needs? What else could we do to make sure setup is seamless?
@@ -76,5 +76,9 @@ Byebug is included. This would be removed on a production build, but it is inclu
 
 <h2> Applied changes to 6/24/21 </h2>
 
-1. The gem was incorrectly labeled 'debugger' in the gemfile. This should have been 'byebug'. Fixing this should resolve point one, but I have also added a version dependency for ruby. 
-   The most recent version of ruby required is from the byebug gem, requiring ruby 2.4.0 or higher. While we should be able to dynamically allow for the gem to install the most recent version of byebug depending on the user's ruby version, I prefer to have the user update their ruby version for stability and security.  
+1. The gem was incorrectly labeled 'debugger' in the gemfile. This4 should have been 'byebug'. I believe the require statement was working on my end because I must have byebug globally installed.
+   Fixing this should resolve point one.  
+2. 
+3. The most recent version of ruby required is from the byebug gem, requiring ruby 2.4.0 or higher. 
+   While we should be able to dynamically allow for the gem to install the most recent version of byebug depending on the user's ruby version (getting us down to 2.0 or higher), I prefer to have a higher requirement of the ruby version for stability and security.
+4. 
