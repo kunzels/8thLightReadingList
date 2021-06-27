@@ -4,3 +4,4 @@ gem "tty-prompt"
 gem 'rest-client', '~>2.1'
 gem 'sqlite3'
 gem 'byebug'
+gem 'dotenv'
