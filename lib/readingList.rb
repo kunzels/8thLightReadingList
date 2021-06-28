@@ -3,14 +3,18 @@ require 'tty-prompt'
 require 'rest-client'
 require 'json'
 require 'sqlite3'
+require 'dotenv'
+Dotenv.load
 
 class ReadingList
-  
+    # needed for testing
+    attr_reader :list
+
     def initialize()
         # Initialize our list, prompt, and key. Populates list from DB insertions. Runs our primary program function.
         @list = {}
         @prompt = TTY::Prompt.new
-        @key = ENV['GOOGLE_API_KEY_STEVE_BOOKS']
+        @key = ENV.fetch('booksApiKey')
         @db = SQLite3::Database.open 'readingList.db'
         rows = @db.execute <<-SQL
             create table if not exists bookList (

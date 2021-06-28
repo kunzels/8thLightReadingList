@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
+ruby '>= 2.4.0'
 gem "tty-prompt"
 gem 'rest-client', '~>2.1'
 gem 'sqlite3'
-gem 'debugger'
+gem 'byebug'
+gem 'dotenv'
+gem 'rspec'
