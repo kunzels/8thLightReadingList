@@ -21,9 +21,8 @@ A small command-line program designed to query google books API. After querying,
 
 1. Navigate to ReadingList in the terminal.
 2. Ensure setup from the above section is complete.
-3. Change line 7 in readingList.rb to Dotenv.load
 4. Run bundle exec rspec in the terminal.
-For these tests, ttyprompt is causing an issue of running on every test. You will need to exit these prompts. Two prompts will emerge asking you to enter nothing, and to enter some text.
+For these tests, ttyprompt is causing an issue of running on every test. You will need to exit these prompts. Two prompts will emerge asking you to enter nothing, and to enter some text. Further investigation needed (see below)
 
 <h1> Approach </h1>
 
