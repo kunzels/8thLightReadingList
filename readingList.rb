@@ -13,7 +13,7 @@ class ReadingList
         @list = {}
         @prompt = TTY::Prompt.new
         @key = ENV.fetch('booksApiKey')
-       
+       debugger
         @db = SQLite3::Database.open 'readingList.db'
         rows = @db.execute <<-SQL
             create table if not exists bookList (

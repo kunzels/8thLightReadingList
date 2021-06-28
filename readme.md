@@ -14,7 +14,7 @@ A small command-line program designed to query google books API. After querying,
 1. Navigate to 8thLightStevenKunzel in the terminal.
 2. Ensure ruby version 2.4.0 or higher is installed.
 2. Run bundle install in the console to install relevant gems.
-3. Navigate to the .env file and place your api key after the = for booksApiKey
+3. Open to the .env file and place your google books api key after the = for booksApiKey
 4. Run ruby readingList.rb in the console. 
 
 <h1> Approach </h1>
@@ -52,7 +52,7 @@ I also installed a helpful integration called tty-prompt. This allows for some e
 Sqlite3 documentation, specific to ruby. Some more references are linked here as well. Ruby version >= 1.8.7 is required.
 * https://rubydoc.info/gems/sqlite3/1.3.8/frames
 
-dotenv is used to allow for an easier key setup then previously explored. This documentation refers to rails, however the gem can be used without requiring a rails setup.
+dotenv is used to allow for an easier key setup then previously explored. This documentation refers to rails, however the gem can be used without requiring a rails setup. No Ruby version requirement.
 * https://github.com/bkeepers/dotenv
 
 Byebug is included. This would be removed on a production build, but it is included if you'd like to use it. Simply place debugger on a line. See documentation here. Ruby version >= 2.4.0 is required.
@@ -79,10 +79,10 @@ Byebug is included. This would be removed on a production build, but it is inclu
 
 <h2> Applied changes to 6/24/21 </h2>
 
-1. The gem was incorrectly labeled 'debugger' in the gemfile. This4 should have been 'byebug'. I believe the require statement was working on my end because I must have byebug globally installed.
+1. The gem was incorrectly labeled 'debugger' in the gemfile. This should have been 'byebug'. I believe the require statement was working on my end because I must have byebug globally installed.
    Fixing this should resolve point one.  
 2. dotenv gem has been installed, negating the need to create an environment variable in terminal.  I decided to push the .env file and remove my personal key, to make the setup easier for the end user. 
-We might instead consider gitignoring this file and ensuring our other programmers know to add in a .env file.
+We might instead consider gitignoring this file and ensuring our other programmers know to add in a .env file, so that no accidental key uploads can occur.
 3. The most recent version of ruby required is from the byebug gem, requiring ruby 2.4.0 or higher. 
    While we should be able to dynamically allow for the gem to install the most recent version of byebug depending on the user's ruby version (getting us down to 2.0 or higher), I prefer to have a higher requirement of the ruby version for stability and security.
 4. 
