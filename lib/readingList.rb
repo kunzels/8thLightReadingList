@@ -7,13 +7,14 @@ require 'dotenv'
 Dotenv.load
 
 class ReadingList
-  
+    # needed for testing
+    attr_reader :list
+
     def initialize()
         # Initialize our list, prompt, and key. Populates list from DB insertions. Runs our primary program function.
         @list = {}
         @prompt = TTY::Prompt.new
         @key = ENV.fetch('booksApiKey')
-       debugger
         @db = SQLite3::Database.open 'readingList.db'
         rows = @db.execute <<-SQL
             create table if not exists bookList (

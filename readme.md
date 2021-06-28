@@ -1,6 +1,6 @@
 <h1> Google Books API and Reading List </h1>
 
-A small command-line program designed to query google books API. After querying, books are able to be added to a reading list and viewed. The project was created in ruby version 2.5.1p57, and requires ruby version >= 2.4.0. It utilizes sqlite3 as a simple database, ttyprompt for some easy-to-manage UI improvements, and rest client for API queries.  
+A small command-line program designed to query google books API. After querying, books are able to be added to a reading list and viewed. The project was created in ruby version 2.5.1p57, and requires ruby version >= 2.4.0. It utilizes sqlite3 as a simple database, ttyprompt for some easy-to-manage UI improvements, and rest client for API queries. There is some light testing added utilizing rspec, but further research is needed into the interaction of rspec and ttyprompt. 
 
 <h1> Goals for this project </h1>
 
@@ -9,13 +9,21 @@ A small command-line program designed to query google books API. After querying,
 * A user should be able to select a book from the five displayed to save to a “Reading List”
 * View a “Reading List” with all the books the user has selected from their queries -- this is a local reading list and not tied to Google Books account features.
 
-<h1> To run </h1>
+<h1> To setup and run </h1>
 
-1. Navigate to 8thLightStevenKunzel in the terminal.
+1. Navigate to ReadingList in the terminal.
 2. Ensure ruby version 2.4.0 or higher is installed.
-2. Run bundle install in the console to install relevant gems.
-3. Open to the .env file and place your google books api key after the = for booksApiKey
-4. Run ruby readingList.rb in the console. 
+3. Run bundle install in the console to install relevant gems.
+4. Place your google books api key in the .env file.
+5. Run ruby ./lib/readingList.rb in the console. 
+
+<h1> To run tests </h1>
+
+1. Navigate to ReadingList in the terminal.
+2. Ensure setup from the above section is complete.
+3. Change line 7 in readingList.rb to Dotenv.load
+4. Run bundle exec rspec in the terminal.
+For these tests, ttyprompt is causing an issue of running on every test. You will need to exit these prompts. Two prompts will emerge asking you to enter nothing, and to enter some text.
 
 <h1> Approach </h1>
 
@@ -52,21 +60,27 @@ I also installed a helpful integration called tty-prompt. This allows for some e
 Sqlite3 documentation, specific to ruby. Some more references are linked here as well. Ruby version >= 1.8.7 is required.
 * https://rubydoc.info/gems/sqlite3/1.3.8/frames
 
-dotenv is used to allow for an easier key setup then previously explored. This documentation refers to rails, however the gem can be used without requiring a rails setup. No Ruby version requirement.
+dotenv is used to allow for an easier key setup than previously explored. This documentation refers to rails, however, the gem can be used without requiring a rails setup. No Ruby version requirement.
 * https://github.com/bkeepers/dotenv
 
 Byebug is included. This would be removed on a production build, but it is included if you'd like to use it. Simply place debugger on a line. See documentation here. Ruby version >= 2.4.0 is required.
 * https://github.com/deivid-rodriguez/byebug
 
+Some light tests were implemented using Rspec. No ruby version requirement.
+* https://rspec.info/documentation/3.10/rspec-core/
+
 <h1> Future considerations </h1>
 
-1. Add tests. I decided against tests for this project due to time constraints, but RSPEC could be utilized for a spec-based testing suite.
+1. Research more into rspec and ttyprompt to create better tests. ttyprompt and rspec have some issues working together, and there is research to be done for their interactions. Current issues in this program involve every test running the prompt, a database is created on the root level. See these threads, as it has been explored, and I think answers can be found with more time.
+   https://github.com/piotrmurach/tty-prompt/issues/139
+
+   https://github.com/DannyBen/tty-prompt-spec-example
+2. Seperate the testing database from the dev database, more environment seperation in general.  
 2. Make the list more readable, perhaps a nice-looking table that organizes everything.
 3. Ability to delete from the reading list, or check off completed books to move to a finished list, etc.
 4. Filter further, by title AND author, by year, etc.
 5. User login integration.
 6. Next button for queries to allow choices beyond just 5.
-7. Better key security.
 
 <h1> Feedback Changes </h1>
 <h2> Feedback 6/24/21 from Hugh Sato </h2>
@@ -81,8 +95,7 @@ Byebug is included. This would be removed on a production build, but it is inclu
 
 1. The gem was incorrectly labeled 'debugger' in the gemfile. This should have been 'byebug'. I believe the require statement was working on my end because I must have byebug globally installed.
    Fixing this should resolve point one.  
-2. dotenv gem has been installed, negating the need to create an environment variable in terminal.  I decided to push the .env file and remove my personal key, to make the setup easier for the end user. 
-We might instead consider gitignoring this file and ensuring our other programmers know to add in a .env file, so that no accidental key uploads can occur.
+2. dotenv gem has been installed, negating the need to create an environment variable in the terminal.  I decided to push the .env file and remove my key, to make the setup easier for the the reviewer. We would instead gitignore this file and ensure our other programmers know to add in a .env file so that no accidental key uploads can occur.
 3. The most recent version of ruby required is from the byebug gem, requiring ruby 2.4.0 or higher. 
    While we should be able to dynamically allow for the gem to install the most recent version of byebug depending on the user's ruby version (getting us down to 2.0 or higher), I prefer to have a higher requirement of the ruby version for stability and security.
-4. 
+4. I've written a few basic tests to show some level of syntactical knowledge in rspec, but the interaction between testing and ttyprompt has proved to be challenging and will require some time and research. Perhaps it would have been beneficial to tackle this project from a TDD perspective, as I may have chosen a different path than ttyprompt, or foreseen these issues earlier and changed the flow a bit. I wrote some tests for the key and database but decided that exposing them to an attr_reader would be insecure. This attr_reader could be commented in and out for testing, or perhaps there is a way to conditionally include attr_readers but for now, the tests are left commented out. This feedback has given me insight that my next area of study should involve TDD and testing in general.
