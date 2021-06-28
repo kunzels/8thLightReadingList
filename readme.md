@@ -1,6 +1,6 @@
 <h1> Google Books API and Reading List </h1>
 
-A small command-line program designed to query google books API. After querying, books are able to be added to a reading list and viewed. The project was created in ruby version 2.5.1p57, and requires ruby version >= 2.4.0. It utilizes sqlite3 as a simple database, ttyprompt for some easy-to-manage UI improvements, and rest client for API queries. There is some light testing added utilizing rspec, but further research is needed into the interaction of rspec and ttyprompt. 
+A small command-line program designed to query google books API. After querying, books can be added to a reading list and viewed. The project was created in ruby version 2.5.1p57, and requires ruby version >= 2.4.0. It utilizes sqlite3 as a simple database, ttyprompt for some easy-to-manage UI improvements, and rest client for API queries. There is some light testing added utilizing rspec, but further research is needed into the interaction of rspec and ttyprompt. 
 
 <h1> Goals for this project </h1>
 
@@ -75,7 +75,7 @@ Some light tests were implemented using Rspec. No ruby version requirement.
    https://github.com/piotrmurach/tty-prompt/issues/139
 
    https://github.com/DannyBen/tty-prompt-spec-example
-2. Seperate the testing database from the dev database, more environment seperation in general.  
+2. Separate the testing database from the dev database, more environment separation in general.  
 2. Make the list more readable, perhaps a nice-looking table that organizes everything.
 3. Ability to delete from the reading list, or check off completed books to move to a finished list, etc.
 4. Filter further, by title AND author, by year, etc.
@@ -95,7 +95,7 @@ Some light tests were implemented using Rspec. No ruby version requirement.
 
 1. The gem was incorrectly labeled 'debugger' in the gemfile. This should have been 'byebug'. I believe the require statement was working on my end because I must have byebug globally installed.
    Fixing this should resolve point one.  
-2. dotenv gem has been installed, negating the need to create an environment variable in the terminal.  I decided to push the .env file and remove my key, to make the setup easier for the the reviewer. We would instead gitignore this file and ensure our other programmers know to add in a .env file so that no accidental key uploads can occur.
+2. dotenv gem has been installed, negating the need to create an environment variable in the terminal.  I decided to push the .env file and remove my key, to make the setup easier for the reviewer. We would instead gitignore this file and ensure our other programmers know to add in a .env file so that no accidental key uploads can occur.
 3. The most recent version of ruby required is from the byebug gem, requiring ruby 2.4.0 or higher. 
    While we should be able to dynamically allow for the gem to install the most recent version of byebug depending on the user's ruby version (getting us down to 2.0 or higher), I prefer to have a higher requirement of the ruby version for stability and security.
 4. I've written a few basic tests to show some level of syntactical knowledge in rspec, but the interaction between testing and ttyprompt has proved to be challenging and will require some time and research. Perhaps it would have been beneficial to tackle this project from a TDD perspective, as I may have chosen a different path than ttyprompt, or foreseen these issues earlier and changed the flow a bit. I wrote some tests for the key and database but decided that exposing them to an attr_reader would be insecure. This attr_reader could be commented in and out for testing, or perhaps there is a way to conditionally include attr_readers but for now, the tests are left commented out. This feedback has given me insight that my next area of study should involve TDD and testing in general.
